@@ -415,6 +415,18 @@ $f3=require('lib/base.php');
 $f3->map('/cart/@item','Item');
 $f3->run();
 ```
+The data will be transferred via x-www-form-urlencode, example of how to get the data in the put-method:
+
+```php
+	function put()
+	{
+		$url=$this->f3->get("BODY");
+		parse_str($url,$data);
+		var_dump($data);
+                $item_a =$this->f3->get("PARAMS");
+        	$item=$item_a["item"];
+	}
+```
 
 Fat-Free's `$f3->map()` method provides a ReST interface by mapping HTTP methods in routes to
 the equivalent methods of an object or a PHP class. If your application receives an incoming
